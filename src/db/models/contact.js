@@ -12,11 +12,10 @@ const contactSchema = new mongoose.Schema(
     },
     email: {
       type: String,
-      required: false,
+      required: true,
     },
     isFavorite: {
       type: Boolean,
-      required: false,
       default: false,
     },
     contactType: {
@@ -32,4 +31,4 @@ const contactSchema = new mongoose.Schema(
   },
 );
 
-export const ContactCollection = mongoose.model('contact', contactSchema);
+export const ContactCollection = mongoose.model('contacts', contactSchema);

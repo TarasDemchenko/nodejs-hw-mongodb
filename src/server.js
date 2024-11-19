@@ -2,11 +2,9 @@ import express from 'express';
 import pino from 'pino-http';
 import cors from 'cors';
 import { getAllContacts, getContactById } from './services/contacts.js';
-import dotenv from 'dotenv';
-import { env } from '../src/utils/env.js';
-dotenv.config();
+import 'dotenv/config';
 
-const PORT = Number(env('PORT', '3000'));
+const PORT = process.env.PORT || 3000;
 
 export const setupServer = () => {
   const app = express();
@@ -23,10 +21,14 @@ export const setupServer = () => {
 
   app.get('/contacts', async (req, res) => {
     const contacts = await getAllContacts();
-    res.send({ status: 200, data: contacts });
+    res.send({
+      status: 200,
+      message: 'Successfully found contacts!',
+      data: contacts,
+    });
   });
 
-  app.get('/contacts/:id', async (req, res) => {
+  app.get('/contacts/:id', async (req, res, next) => {
     const { id } = req.params;
     const contact = await getContactById(id);
     if (!contact) {
@@ -51,16 +53,3 @@ export const setupServer = () => {
     console.log(`Server is running on port ${PORT}`);
   });
 };
-
-// setupServer.get('/', (req, res) => {
-//   res.send('hello')
-// })
-
-// app.use((req, res, next) => {
-//   res.status(404).send({ status: 404, message: 'Route not found' });
-// });
-
-// app.use((error, req, res, next) => {
-//   console.error(error);
-//   res.status(500).send({ status: 500, message: 'Internl server error' });
-// });
