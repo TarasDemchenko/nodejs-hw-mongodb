@@ -39,6 +39,7 @@ export const setupServer = () => {
     }
     res.send({
       status: 200,
+      message: `Successfully found contact with id ${id}!`,
       data: contact,
     });
   });
