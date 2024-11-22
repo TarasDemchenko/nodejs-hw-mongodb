@@ -29,6 +29,18 @@ export const getContactControllerById = async (req, res, next) => {
   });
 };
 
+// export const createContactController = async (req, res) => {
+//   const contact = {
+//     name: req.body.name,
+//     phoneNumber: req.body.phoneNumber,
+//     email: req.body.email,
+//   };
+
+//   const result = await createContact(contact);
+//   console.log(result);
+//   res.send('hello');
+// };
+
 export const createContactController = async (req, res) => {
   const contact = await createContact(req.body);
   res.status(201).json({
@@ -60,5 +72,9 @@ export const deleteContactController = async (req, res, next) => {
     next(createHttpError(404, 'Contact not found'));
     return;
   }
-  res.status(204).send();
+  res.send({
+    status: 204,
+    message: 'Contact deleted',
+    data: contact,
+  });
 };
