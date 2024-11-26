@@ -18,16 +18,8 @@ export const createContact = async (payload) => {
 export const updateContact = async (id, contact) => {
   const rawResult = await ContactCollection.findByIdAndUpdate(id, contact, {
     new: true,
-    upsert: true,
-    includeResultMetadata: true,
   });
-
-  if (!rawResult || !rawResult.value) return null;
-
-  return {
-    contact: rawResult.value,
-    isNew: Boolean(rawResult?.lastErrorObject?.upserted),
-  };
+  return rawResult;
 };
 
 export const deleteContact = async (id) => {

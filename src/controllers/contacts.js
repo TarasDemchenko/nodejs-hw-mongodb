@@ -50,13 +50,12 @@ export const createContactController = async (req, res) => {
   });
 };
 
-export const patchContactController = async (req, res, next) => {
+export const patchContactController = async (req, res) => {
   const { id } = req.params;
   const result = await updateContact(id, req.body);
 
-  if (!result) {
-    next(createHttpError(404, 'Contact not found'));
-    return;
+  if (result === null) {
+    throw new (createHttpError(404, 'Contact not found'))();
   }
   res.json({
     status: 200,
