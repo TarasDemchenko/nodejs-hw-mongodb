@@ -55,12 +55,12 @@ export const patchContactController = async (req, res) => {
   const result = await updateContact(id, req.body);
 
   if (result === null) {
-    throw new (createHttpError(404, 'Contact not found'))();
+    throw new createHttpError.NotFound('Contact not found');
   }
-  res.json({
+  res.send({
     status: 200,
     message: `Successfully patched a contact!`,
-    data: result.contact,
+    data: result,
   });
 };
 
