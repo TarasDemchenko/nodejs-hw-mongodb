@@ -4,7 +4,7 @@ const parseIsFavourite = (value) => {
 
   const parsedBool = JSON.parse(value);
 
-  if (parsedBool !== true && parsedBool !== false) {
+  if (parsedBool !== true) {
     return;
   }
   return parsedBool;
