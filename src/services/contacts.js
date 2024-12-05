@@ -32,7 +32,7 @@ export const getAllContacts = async ({
   const totalPages = Math.ceil(contactCount / perPage);
 
   return {
-    contacts,
+    data: contacts,
     page,
     perPage,
     contactCount,
