@@ -7,7 +7,7 @@ import { SessionCollection } from '../db/models/session.js';
 export const registerUser = async (payload) => {
   const user = await UsersCollection.findOne({ email: payload.email });
   if (user !== null) {
-    throw createHttpError(409, 'Email already in use');
+    throw createHttpError(409, 'Email in use');
   }
 
   payload.password = await bcrypt.hash(payload.password, 10);

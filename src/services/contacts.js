@@ -6,10 +6,11 @@ export const getAllContacts = async ({
   sortBy,
   sortOrder,
   filter,
+  ownerId,
 }) => {
   const skip = page > 0 ? (page - 1) * perPage : 0;
 
-  const contactQuery = ContactCollection.find();
+  const contactQuery = ContactCollection.find({ ownerId });
   // const contactCount = await ContactCollection.countDocuments(contactQuery);
 
   // const contacts = await contactQuery.skip(skip).limit(perPage);
@@ -46,6 +47,14 @@ export const getContactById = async (id) => {
   const contact = await ContactCollection.findById(id);
   return contact;
 };
+
+// export const getContactById = async (id, ownerId) => {
+//   const contact = await ContactCollection.findOne({
+//     _id: id,
+//     ownerId: ownerId,
+//   });
+//   return contact;
+// };
 
 export const createContact = async (payload) => {
   const contacts = await ContactCollection.create(payload);

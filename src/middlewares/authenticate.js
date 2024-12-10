@@ -26,7 +26,7 @@ export const authenticate = async (req, res, next) => {
   const user = await UsersCollection.findById(session.userId);
 
   if (user === null) {
-    return next(createHttpError(401, '1'));
+    return next(createHttpError(401, 'User not found'));
   }
 
   req.user = { id: user._id, name: user.name };
