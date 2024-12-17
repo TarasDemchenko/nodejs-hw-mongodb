@@ -9,7 +9,7 @@ import {
 } from '../controllers/contacts.js';
 import { ctrlWrapper } from '../utils/ctrlWrapper.js';
 import { isValidId } from '../middlewares/isValidId.js';
-
+import { upload } from '../middlewares/upload.js';
 import { validateBody } from '../middlewares/validateBody.js';
 import {
   changeContactSchema,
@@ -24,6 +24,7 @@ router.get('/', ctrlWrapper(getContactsController));
 router.get('/:id', isValidId, ctrlWrapper(getContactControllerById));
 router.post(
   '/',
+  upload.single('photo'),
   jsonParser,
   validateBody(createContactSchema),
   ctrlWrapper(createContactController),
