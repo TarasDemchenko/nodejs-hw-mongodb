@@ -3,6 +3,7 @@ import pino from 'pino-http';
 import cors from 'cors';
 import router from './routers/index.js';
 import 'dotenv/config';
+import path from 'node:path';
 import { notFoundHandler } from './middlewares/notFoundHandler.js';
 import { errorHandler } from './middlewares/errorHandler.js';
 import cookieParser from 'cookie-parser';
@@ -13,7 +14,7 @@ export const setupServer = () => {
 
   app.use(cors());
   app.use(cookieParser());
-
+  app.use('/photo', express.static(path.resolve('src/public/avatars')));
   app.use(
     pino({
       transport: {
