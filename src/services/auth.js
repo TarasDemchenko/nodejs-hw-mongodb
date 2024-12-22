@@ -83,9 +83,10 @@ export const requestResetPassword = async (email) => {
       expiresIn: '5m',
     },
   );
+
   const html = handlebars.compile(RESET_PASSWORD_TEMPLATE);
   await sendEmail({
-    from: 'tarasdemchenko1993@gmail.com',
+    from: 'taras140593@gmail.com',
     to: user.email,
     subject: 'Reset password',
     html: html({ resetToken }),
@@ -101,6 +102,7 @@ export const resetPassword = async (newPassword, token) => {
       _id: decoded.sub,
       email: decoded.email,
     });
+
     if (user === null) {
       throw createHttpError(404, 'User not found ');
     }
