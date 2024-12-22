@@ -86,7 +86,7 @@ export const requestResetPassword = async (email) => {
 
   const html = handlebars.compile(RESET_PASSWORD_TEMPLATE);
   await sendEmail({
-    from: 'taras140593@gmail.com',
+    from: 'tarasdemchenko1993@gmail.com',
     to: user.email,
     subject: 'Reset password',
     html: html({ resetToken }),
