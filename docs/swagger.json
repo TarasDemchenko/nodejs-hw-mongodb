@@ -260,7 +260,7 @@
             "name": "id",
             "required": true,
             "schema": {
-              "type": "integer",
+              "type": "string",
               "example": "65ca67e7ae7f10c88b598384"
             }
           }
@@ -273,23 +273,19 @@
                 "properties": {
                   "name": {
                     "description": "Contact's name",
-                    "type": "string",
-                    "example": "John Doe"
+                    "type": "string"
                   },
                   "phoneNumber": {
                     "description": "Contact's number",
-                    "type": "string",
-                    "example": 380200000000
+                    "type": "string"
                   },
                   "email": {
                     "description": "Contact's email",
-                    "type": "string",
-                    "example": "jon.doe@mail.com"
+                    "type": "string"
                   },
                   "isFavourite": {
                     "description": "Contact's favourite",
-                    "type": "boolean",
-                    "example": false
+                    "type": "boolean"
                   },
                   "contactType": {
                     "description": "Contact's type",
@@ -298,8 +294,7 @@
                       "work",
                       "home",
                       "personal"
-                    ],
-                    "example": "work"
+                    ]
                   },
                   "photo": {
                     "description": "Link to contact's photo",

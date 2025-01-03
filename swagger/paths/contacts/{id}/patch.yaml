@@ -10,7 +10,7 @@ parameters:
     name: id
     required: true
     schema:
-      type: integer
+      type: string
       example: '65ca67e7ae7f10c88b598384'
 requestBody:
   content:
@@ -21,24 +21,24 @@ requestBody:
           name:
             description: "Contact's name"
             type: string
-            example: John Doe
+
           phoneNumber:
             description: "Contact's number"
             type: string
-            example: +380200000000
+
           email:
             description: "Contact's email"
             type: string
-            example: jon.doe@mail.com
+
           isFavourite:
             description: "Contact's favourite"
             type: boolean
-            example: false
+
           contactType:
             description: "Contact's type"
             type: string
             enum: ['work', 'home', 'personal']
-            example: work
+
           photo:
             description: "Link to contact's photo"
             type: string
