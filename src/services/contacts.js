@@ -53,6 +53,9 @@ export const getContactById = async (id, userId) => {
     _id: id,
     userId,
   });
+  // const contact = await ContactCollection.findById({
+  //   id,
+  // });
   return contact;
 };
 
