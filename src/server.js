@@ -1,5 +1,5 @@
 import * as fs from 'node:fs';
-import swaggerUi from 'swagger-ui-express';
+import swaggerUI from 'swagger-ui-express';
 import express from 'express';
 import pino from 'pino-http';
 import cors from 'cors';
@@ -13,7 +13,9 @@ const PORT = process.env.PORT || 3000;
 
 export const setupServer = () => {
   const app = express();
-
+  const swaggerDocument = JSON.parse(
+    fs.readFileSync(path.resolve('docs/swagger.json'), 'utf-8'),
+  );
   app.use(cors());
   app.use(cookieParser());
   app.use('/photo', express.static(path.resolve('src/public/avatars')));
@@ -24,10 +26,8 @@ export const setupServer = () => {
       },
     }),
   );
-  const swaggerDocument = JSON.parse(
-    fs.readFileSync(path.resolve('docs/swagger.json'), 'utf-8'),
-  );
-  app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+
+  app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerDocument));
   app.use('/', router);
 
   app.use(notFoundHandler);
