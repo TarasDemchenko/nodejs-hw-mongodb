@@ -49,8 +49,7 @@
                   "name",
                   "phoneNumber",
                   "email",
-                  "contactType",
-                  "photo"
+                  "contactType"
                 ],
                 "properties": {
                   "name": {
@@ -182,23 +181,7 @@
           },
           {
             "in": "query",
-            "name": "minAvgMark",
-            "schema": {
-              "type": "number",
-              "example": 4
-            }
-          },
-          {
-            "in": "query",
-            "name": "maxAvgMark",
-            "schema": {
-              "type": "number",
-              "example": 10
-            }
-          },
-          {
-            "in": "query",
-            "name": "isFavourite",
+            "name": "favourite",
             "schema": {
               "type": "boolean",
               "example": true
@@ -206,7 +189,7 @@
           },
           {
             "in": "query",
-            "name": "contactType",
+            "name": "type",
             "schema": {
               "type": "string",
               "enum": [
@@ -495,8 +478,7 @@
                   "type": "object",
                   "required": [
                     "status",
-                    "message",
-                    "data"
+                    "message"
                   ],
                   "properties": {
                     "status": {
@@ -506,10 +488,6 @@
                     "message": {
                       "type": "string",
                       "example": "Contact deleted!"
-                    },
-                    "data": {
-                      "type": "object",
-                      "example": {}
                     }
                   }
                 }

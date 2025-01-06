@@ -22,7 +22,6 @@ responses:
           required:
             - status
             - message
-            - data
           properties:
             status:
               type: integer
@@ -30,9 +29,6 @@ responses:
             message:
               type: string
               example: Contact deleted!
-            data:
-              type: object
-              example: {}
 
   '404':
     $ref: ../../../components/responses/404.yaml

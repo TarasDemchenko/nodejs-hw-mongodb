@@ -15,7 +15,6 @@ requestBody:
           - phoneNumber
           - email
           - contactType
-          - photo
         properties:
           name:
             description: "Contact's name"

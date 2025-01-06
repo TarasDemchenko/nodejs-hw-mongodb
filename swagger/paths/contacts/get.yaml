@@ -29,22 +29,12 @@ parameters:
       enum: ['asc', 'desc']
       example: 'asc'
   - in: query
-    name: minAvgMark
-    schema:
-      type: number
-      example: 4
-  - in: query
-    name: maxAvgMark
-    schema:
-      type: number
-      example: 10
-  - in: query
-    name: isFavourite
+    name: favourite
     schema:
       type: boolean
       example: true
   - in: query
-    name: contactType
+    name: type
     schema:
       type: string
       enum: ['work', 'home', 'personal']
